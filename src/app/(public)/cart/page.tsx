@@ -297,7 +297,7 @@ const CartPage = () => {
         {/* CHECKOUT FORM */}
         {showCheckout && (
           <div className="lg:col-span-2">
-            <CheckoutForm items={items} subtotal={subtotal} />
+            <CheckoutForm subtotal={subtotal} />
           </div>
         )}
         {/* RIGHT SIDE */}

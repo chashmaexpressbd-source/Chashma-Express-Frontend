@@ -10,7 +10,7 @@ import { getUser } from '@/utils/auth';
 import { usePathname, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useOrderStore } from '@/store/order.store';
-import { trackAddToCart } from '../../shared/analytics/events';
+
 import { useProductStore } from '@/store/product.store';
 
 type Props = {
@@ -66,20 +66,6 @@ const ProductActions = ({ productId, product }: Props) => {
       setLoading(true);
 
       await addToCart(productId, quantity);
-
-      trackAddToCart({
-        productId: product.id,
-        productName: product.name,
-        price: Number(product.specialPrice ?? product.price),
-        quantity,
-        category: product.category?.name || '',
-        brand: product.brand || '',
-        variant: selectedSize
-          ? `${selectedSize}${product.colorVariants?.length ? ` ${selectedSize}` : ''}`
-          : '',
-        size: selectedSize || '',
-        color: '',
-      });
 
       increase(quantity);
       toast.success('Added to cart!');

@@ -11,16 +11,16 @@ const leftNavLinks = [
   },
 
   {
-    label: 'Shoes',
-    href: '/products?category=shoes',
+    label: 'Sunglasses',
+    href: '/products?category=sunglasses',
   },
   {
-    label: 'Fashion',
-    href: '/products?category=Fashion',
+    label: 'Blue Carte',
+    href: '/products?category=Blue Carte',
   },
   {
-    label: 'Gadgets',
-    href: '/products?category=Gadgets',
+    label: 'Power Glasses',
+    href: '/products?category=Power Glasses',
   },
 ];
 const rightNavLinks = [

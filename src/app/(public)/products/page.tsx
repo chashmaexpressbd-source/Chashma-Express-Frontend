@@ -138,7 +138,7 @@ export default async function ProductListing({
                       checked={sp?.maxPrice === '50'}
                       readOnly
                     />
-                    Under $50
+                    Under 50 TK
                   </Link>
                   <Link
                     href={`?minPrice=50&maxPrice=100${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
@@ -149,7 +149,7 @@ export default async function ProductListing({
                       checked={sp?.minPrice === '50'}
                       readOnly
                     />
-                    $50 - $100
+                    50 Tk - 100 Tk
                   </Link>
                   <Link
                     href={`?minPrice=100&maxPrice=200${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
@@ -160,7 +160,7 @@ export default async function ProductListing({
                       checked={sp?.minPrice === '100'}
                       readOnly
                     />
-                    $100 - $200
+                    100 Tk - 200 Tk
                   </Link>
                   <Link
                     href={`?minPrice=200${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
@@ -171,7 +171,7 @@ export default async function ProductListing({
                       checked={sp?.minPrice === '200'}
                       readOnly
                     />
-                    $200+
+                    200 Tk+
                   </Link>
                 </div>
               </div>
@@ -226,46 +226,6 @@ export default async function ProductListing({
                       {category.name}
                     </Link>
                   ))}
-                </div>
-              </div>
-              {/* ================= BRAND ================= */}
-              <div className="mb-5 border-b pb-4">
-                <h3 className="font-semibold mb-2">Brand</h3>
-
-                <div className="space-y-2 text-sm">
-                  <Link
-                    href={`?brand=Apple${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                    className="block hover:text-title  flex items-center gap-2"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={sp?.brand === 'Apple'}
-                      readOnly
-                    />
-                    Apple
-                  </Link>
-                  <Link
-                    href={`?brand=Samsung${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                    className="block hover:text-title  flex items-center gap-2"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={sp?.brand === 'Samsung'}
-                      readOnly
-                    />
-                    Samsung
-                  </Link>
-                  <Link
-                    href={`?brand=Sony${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                    className="block hover:text-title  flex items-center gap-2"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={sp?.brand === 'Sony'}
-                      readOnly
-                    />
-                    Sony
-                  </Link>
                 </div>
               </div>
 
@@ -431,7 +391,7 @@ export default async function ProductListing({
                               href={`?maxPrice=50${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
                               className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
                             >
-                              <span>Under $50</span>
+                              <span>Under 50 Tk</span>
                               <span>→</span>
                             </Link>
                           </SheetClose>
@@ -440,7 +400,7 @@ export default async function ProductListing({
                               href={`?minPrice=50&maxPrice=100${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
                               className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
                             >
-                              <span>$50 - $100</span>
+                              <span>50 Tk - 100 Tk</span>
                               <span>→</span>
                             </Link>
                           </SheetClose>
@@ -449,7 +409,7 @@ export default async function ProductListing({
                               href={`?minPrice=100&maxPrice=200${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
                               className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
                             >
-                              <span>$100 - $200</span>
+                              <span>100 Tk - 200 Tk</span>
                               <span>→</span>
                             </Link>
                           </SheetClose>
@@ -458,7 +418,7 @@ export default async function ProductListing({
                               href={`?minPrice=200${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
                               className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
                             >
-                              <span>$200+</span>
+                              <span>200 Tk+</span>
                               <span>→</span>
                             </Link>
                           </SheetClose>
@@ -493,77 +453,26 @@ export default async function ProductListing({
                         </div>
                       </div>
 
-                      {/* ================= CATEGORY ================= */}
-                      <div className="mb-6 border-b pb-6">
-                        <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide text-gray-500">
-                          Category
-                        </h3>
+                      {/* ================= Category ================= */}
+                      <div className="mb-5 border-b pb-4">
+                        <h3 className="font-semibold mb-2">Category</h3>
 
-                        <div className="space-y-2">
-                          <SheetClose asChild>
+                        <div className="space-y-2 text-sm">
+                          {categories.map((category: Category) => (
                             <Link
-                              href={`?category=Smartphones${sp?.search ? '&search=' + sp.search : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                              className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
+                              key={category.id}
+                              href={`?categoryId=${category.id}`}
+                              className="block hover:text-title flex items-center gap-2"
                             >
-                              <span>Smartphones</span>
-                              <span>→</span>
-                            </Link>
-                          </SheetClose>
-                          <SheetClose asChild>
-                            <Link
-                              href={`?category=Laptop${sp?.search ? '&search=' + sp.search : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                              className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
-                            >
-                              <span>Laptop</span>
-                              <span>→</span>
-                            </Link>
-                          </SheetClose>
-                          <SheetClose asChild>
-                            <Link
-                              href={`?category=Fashion${sp?.search ? '&search=' + sp.search : ''}${sp?.brand ? '&brand=' + sp.brand : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                              className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
-                            >
-                              <span>Fashion</span>
-                              <span>→</span>
-                            </Link>
-                          </SheetClose>
-                        </div>
-                      </div>
+                              <input
+                                type="checkbox"
+                                checked={sp?.categoryId === category.id}
+                                readOnly
+                              />
 
-                      {/* ================= BRAND ================= */}
-                      <div className="mb-6 border-b pb-6">
-                        <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide text-gray-500">
-                          Brand
-                        </h3>
-
-                        <div className="space-y-2">
-                          <SheetClose asChild>
-                            <Link
-                              href={`?brand=Apple${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                              className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
-                            >
-                              <span>Apple</span>
-                              <span>→</span>
+                              {category.name}
                             </Link>
-                          </SheetClose>
-                          <SheetClose asChild>
-                            <Link
-                              href={`?brand=Samsung${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                              className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
-                            >
-                              <span>Samsung</span>
-                              <span>→</span>
-                            </Link>
-                          </SheetClose>
-                          <SheetClose asChild>
-                            <Link
-                              href={`?brand=Sony${sp?.search ? '&search=' + sp.search : ''}${sp?.categoryId ? '&category=' + sp.categoryId : ''}${sp?.rating ? '&rating=' + sp.rating : ''}${sp?.minPrice ? '&minPrice=' + sp.minPrice : ''}${sp?.maxPrice ? '&maxPrice=' + sp.maxPrice : ''}${sp?.sortBy ? '&sortBy=' + sp.sortBy : ''}${sp?.sortOrder ? '&sortOrder=' + sp.sortOrder : ''}`}
-                              className="flex items-center justify-between rounded-xs border px-4 py-3 text-sm hover:border-orange-400 hover:bg-orange-50 transition"
-                            >
-                              <span>Sony</span>
-                              <span>→</span>
-                            </Link>
-                          </SheetClose>
+                          ))}
                         </div>
                       </div>
 

@@ -244,7 +244,7 @@ const ColorVariantCard = ({
               <thead>
                 <tr className="border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
                   <th className="px-2 py-2.5 text-gray-600 dark:text-gray-400 font-semibold">
-                    Size *
+                    Frame Color *
                   </th>
                   <th className="px-2 py-2.5 text-gray-600 dark:text-gray-400 font-semibold">
                     Price ৳ *
@@ -279,7 +279,7 @@ const ColorVariantCard = ({
                             e.target.value,
                           )
                         }
-                        placeholder="36"
+                        placeholder="Frame Color"
                         className="w-full px-2 py-1.5 border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-orange-500 text-sm"
                       />
                     </td>

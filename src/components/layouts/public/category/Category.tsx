@@ -1,138 +1,109 @@
-import { ChevronRight } from 'lucide-react';
-import Image from 'next/image';
+import {
+  ChevronRight,
+  PhoneCall,
+  Truck,
+  Banknote,
+  ShieldCheck,
+} from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
 const Category = () => {
-  const categories = [
+  const benefits = [
     {
-      name: 'Shoes ',
-      image: '/images/category1.png',
+      icon: PhoneCall,
+      title: 'Easy Ordering',
+      description: 'Call us to place your order',
+      value: '01302-596174',
     },
     {
-      name: 'Shoes',
-      image: '/images/category2.png',
+      icon: Truck,
+      title: 'Fast Delivery',
+      description: 'Delivery across Bangladesh',
     },
     {
-      name: 'Shoes',
-      image: '/images/category3.png',
+      icon: Banknote,
+      title: 'Cash on Delivery',
+      description: 'Pay when your order arrives',
     },
     {
-      name: 'Shoes ',
-      image: '/images/category4.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category5.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category3.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category2.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category1.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category4.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category3.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category2.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category1.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category4.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category3.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category2.png',
-    },
-    {
-      name: 'Shoes',
-      image: '/images/category1.png',
+      icon: ShieldCheck,
+      title: 'Quality Assured',
+      description: 'Carefully selected eyewear',
     },
   ];
 
   return (
-    <div className="w-full py-10 bg-white">
-      <div className="container mx-auto  md:px-0">
-        {/* Header Section */}
-        <div className="mb-6 sm:mb-8 flex items-center justify-between gap-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
-            Categories
-          </h2>
+    <section className="w-full border-y border-color-card-foreground bg-white ">
+      <div className="container mx-auto px-4 pt-5">
+        {/* Header */}
+        <div className="flex items-center justify-between py-6 sm:py-7">
+          <div>
+            <h2 className="text-lg font-bold text-gray-800 sm:text-xl md:text-2xl lg:text-3xl">
+              Why Shop With Us?
+            </h2>
+
+            <p className="mt-1 text-xs text-gray-500 sm:text-sm">
+              A simple and reliable eyewear shopping experience
+            </p>
+          </div>
 
           <Link
             href="/products"
-            className="inline-flex shrink-0 items-center gap-1 text-sm sm:text-base font-semibold text-title hover:text-hover-text transition-colors group"
+            className="group inline-flex shrink-0 items-center gap-0.5 text-xs font-semibold text-title transition-colors hover:text-hover-text sm:gap-1 sm:text-sm md:text-base"
           >
-            <span>View more</span>
-            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+            <span>Shop Now</span>
+
+            <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Grid */}
-        <div className="overflow-x-auto md:overflow-visible scrollbar-thin scrollbar-thumb-orange-400 scrollbar-track-gray-100">
-          {/* Mobile (scroll + 2 rows) */}
-          <div className="grid grid-rows-2 grid-flow-col auto-cols-[25%] md:hidden">
-            {categories.map((cat, idx) => (
-              <div
-                key={idx}
-                className="text-center cursor-pointer group border border-gray-200 py-5"
-              >
-                <div className="w-16 h-16 mx-auto overflow-hidden group-hover:scale-105 transition">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    width={64}
-                    height={64}
-                    className="w-16 h-16 object-cover "
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Benefits */}
+        <div className="grid grid-cols-2 border-t border-color-card-foreground lg:grid-cols-4">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
 
-          {/* Desktop (2 rows grid) */}
-          <div className="hidden md:grid grid-cols-8 gap-0">
-            {categories.map((cat, idx) => (
+            return (
               <div
-                key={idx}
-                className="text-center cursor-pointer group border border-gray-200 py-5"
+                key={benefit.title}
+                className={`
+                  flex items-center gap-3 py-5 pr-4
+                  ${index % 2 !== 0 ? 'pl-4' : ''}
+                  lg:border-r lg:border-color-card-foreground lg:px-6
+                  ${index >= 2 ? 'border-t border-color-card-foreground lg:border-t-0' : ''}
+                  ${index === 3 ? 'lg:border-r-0' : ''}
+                `}
               >
-                <div className="w-16 h-16 mx-auto overflow-hidden group-hover:scale-105 transition">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    width={200}
-                    height={200}
-                    className="w-16 h-16 object-cover "
-                  />
+                {/* Icon */}
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gray-50 text-gray-700">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} />
+                </div>
+
+                {/* Content */}
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-gray-900 sm:text-base">
+                    {benefit.title}
+                  </h3>
+
+                  <p className="mt-0.5 text-[11px] leading-4 text-gray-500 sm:text-xs">
+                    {benefit.description}
+                  </p>
+
+                  {benefit.value && (
+                    <a
+                      href={`tel:${benefit.value.replace(/-/g, '')}`}
+                      className="mt-0.5 block text-xs font-semibold text-primary hover:underline"
+                    >
+                      {benefit.value}
+                    </a>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

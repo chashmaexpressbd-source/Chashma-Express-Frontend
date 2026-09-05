@@ -53,7 +53,7 @@ const ProductPurchaseOptions = ({ product }: Props) => {
         <div>
           <div className="mb-3 flex items-center justify-between">
             <h3 className="text-sm font-semibold text-gray-800">
-              কালার নির্বাচন করুন
+              Available Lens Colors
             </h3>
 
             {selectedColor && (
@@ -95,10 +95,12 @@ const ProductPurchaseOptions = ({ product }: Props) => {
         <div>
           <div className="mb-3 flex items-center justify-between">
             <h3 className="text-sm font-semibold text-gray-800">
-              Available Sizes
+              Available Frame Colors
             </h3>
 
-            <span className="text-xs text-gray-500">Size নির্বাচন করুন</span>
+            <span className="text-xs text-gray-500">
+              Frame Colors নির্বাচন করুন
+            </span>
           </div>
 
           <div className="grid grid-cols-6 gap-1.25 sm:gap-2 sm:flex sm:flex-wrap">

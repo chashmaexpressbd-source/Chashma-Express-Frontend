@@ -6,12 +6,15 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const categories = [
-    { name: 'Electronics', link: '#' },
-    { name: 'Fashion', link: '#' },
-    { name: 'Home & Garden', link: '#' },
-    { name: 'Sports & Entertainment', link: '#' },
-    { name: 'Health & Beauty', link: '#' },
-    { name: 'Machinery', link: '#' },
+    { name: 'Frame Collection', link: '#' },
+    { name: 'Ladies Sunglasses', link: '#' },
+    { name: 'Boys Sunglasses', link: '#' },
+    { name: 'Blue Cut Glasses', link: '#' },
+    { name: 'Premium Collection', link: '#' },
+    { name: 'Sunglasses', link: '#' },
+    { name: 'Photochromic Glasses', link: '#' },
+    { name: "Men's Collection", link: '#' },
+    { name: "Women's Collection", link: '#' },
   ];
 
   const quickLinks = [
@@ -20,14 +23,6 @@ const Footer = () => {
     { name: 'About Us', link: '/about' },
     { name: 'Contact Us', link: '/contact' },
     { name: 'FAQs', link: '/faq' },
-  ];
-
-  const customerService = [
-    { name: 'Privacy Policy', link: '/privacy-policy' },
-    { name: 'Warranty Policy', link: '/warranty-policy' },
-    { name: 'Terms & Conditions', link: '/terms-conditions' },
-    { name: 'Return & Refund Policy', link: '/return-refund' },
-    { name: 'Pre-Order Conditions', link: '/pre-order-conditions' },
   ];
 
   const SOCIAL_ICONS = [
@@ -127,26 +122,6 @@ const Footer = () => {
                   >
                     <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Customer Service Section */}
-          <div>
-            <h3 className="text-gray-800 font-semibold text-lg mb-4">
-              Customer Service
-            </h3>
-            <ul className="space-y-2">
-              {customerService.map((service, idx) => (
-                <li key={idx}>
-                  <a
-                    href={service.link}
-                    className="text-gray-500 hover:text-title transition-colors duration-300 flex items-center gap-2 text-sm group"
-                  >
-                    <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                    {service.name}
                   </a>
                 </li>
               ))}

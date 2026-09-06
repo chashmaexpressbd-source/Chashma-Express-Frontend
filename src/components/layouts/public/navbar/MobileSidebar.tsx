@@ -4,15 +4,15 @@ import {
   User,
   FileText,
   Package,
-  Smartphone,
-  Laptop,
-  Shirt,
-  Gamepad2,
-  Watch,
+  Glasses,
+  Venus,
+  Mars,
+  Eye,
+  Crown,
+  Sun,
+  SunMedium,
+  UserRound,
   Shield,
-  Home,
-  Monitor,
-  Trophy,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -115,14 +115,15 @@ const MobileNavbar = ({ user }: UserDropdownProps) => {
               </h3>
               <div className="space-y-1">
                 {[
-                  { name: 'Smartphones', icon: Smartphone },
-                  { name: 'Laptop', icon: Laptop },
-                  { name: 'Fashion', icon: Shirt },
-                  { name: 'Gaming', icon: Gamepad2 },
-                  { name: 'Accessories', icon: Watch },
-                  { name: 'Electronics', icon: Monitor },
-                  { name: 'Home & Garden', icon: Home },
-                  { name: 'Sports & Entertainment', icon: Trophy },
+                  { name: 'Frame Collection', icon: Glasses },
+                  { name: 'Ladies Sunglasses', icon: Venus },
+                  { name: 'Boys Sunglasses', icon: Mars },
+                  { name: 'Blue Cut Glasses', icon: Eye },
+                  { name: 'Premium Collection', icon: Crown },
+                  { name: 'Sunglasses', icon: Sun },
+                  { name: 'Photochromic Glasses', icon: SunMedium },
+                  { name: 'Men’s Collection', icon: UserRound },
+                  { name: 'Women’s Collection', icon: UserRound },
                 ].map(cat => {
                   const Icon = cat.icon;
                   return (
@@ -146,7 +147,17 @@ const MobileNavbar = ({ user }: UserDropdownProps) => {
                 Brands
               </h3>
               <div className="space-y-1">
-                {['Apple', 'Samsung', 'Sony', 'Xiaomi', 'Dell'].map(brand => (
+                {[
+                  'Ray-Ban',
+                  'Oakley',
+                  'Gucci',
+                  'Prada',
+                  'Tom Ford',
+                  'Versace',
+                  'Emporio Armani',
+                  'Giorgio Armani',
+                  'Police',
+                ].map(brand => (
                   <Link
                     key={brand}
                     href={`/products?brand=${brand}`}

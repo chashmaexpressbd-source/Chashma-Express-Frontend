@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import { MessageCircle, Bot } from 'lucide-react';
+// import React, { useState } from 'react';
+// import { MessageCircle, Bot } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { RiRobot2Fill } from 'react-icons/ri';
-import AIChatModal from './AIChatModal';
+// import { RiRobot2Fill } from 'react-icons/ri';
+// import AIChatModal from './AIChatModal';
 
 const FloatingIcon = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  // const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleWhatsAppClick = () => {
     // Replace with your WhatsApp number

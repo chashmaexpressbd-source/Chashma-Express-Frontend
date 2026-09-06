@@ -33,21 +33,6 @@ const ProductGallery = ({
     setZoomStyle({});
   };
 
-  // Cursor position  zoom
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const container = e.currentTarget;
-
-    const rect = container.getBoundingClientRect();
-
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    setZoomStyle({
-      transformOrigin: `${x}% ${y}%`,
-      transform: 'scale(2)',
-    });
-  };
-
   const handleMouseLeave = () => {
     setZoomStyle({});
   };
@@ -57,7 +42,6 @@ const ProductGallery = ({
       {/* MAIN IMAGE */}
       <div
         className="group relative h-[360px] overflow-hidden rounded-md border border-gray-200 bg-gray-50 md:h-[500px]"
-        onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
         {currentImage ? (

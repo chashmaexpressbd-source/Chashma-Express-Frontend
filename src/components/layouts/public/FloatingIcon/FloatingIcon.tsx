@@ -35,7 +35,7 @@ const FloatingIcon = () => {
         </button>
 
         {/* AI Chat Bot */}
-        <button
+        {/* <button
           onClick={() => setIsChatOpen(true)}
           className="w-14 h-14 rounded-full bg-gradient-primary text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 group relative"
           title="Chat with AI Assistant"
@@ -44,13 +44,13 @@ const FloatingIcon = () => {
           <span className="absolute right-full mr-3 px-3 py-1 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
             AI Assistant
           </span>
-          {/* Pulse animation for bot icon */}
+        
           <div className="absolute inset-0 rounded-full bg-primary-light animate-ping opacity-75"></div>
-        </button>
+        </button> */}
       </div>
 
       {/* AI Chat Modal */}
-      <AIChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      {/* <AIChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} /> */}
     </>
   );
 };

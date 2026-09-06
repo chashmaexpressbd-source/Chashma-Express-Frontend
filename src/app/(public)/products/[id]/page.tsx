@@ -165,7 +165,7 @@ export default async function ProductDetailsPage({
                 PRICE
             ================================================== */}
 
-            <div className="bg-gray-50 rounded-sm p-4 mt-5">
+            <div className="bg-gray-50 rounded-sm p-4 mt-5 hidden sm:block">
               <div className="flex items-center gap-3 flex-wrap">
                 <span className="text-3xl font-bold text-title">
                   ৳{currentPrice.toLocaleString()}

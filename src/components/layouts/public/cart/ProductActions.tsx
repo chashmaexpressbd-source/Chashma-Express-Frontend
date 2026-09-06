@@ -40,6 +40,15 @@ const ProductActions = ({ productId, product }: Props) => {
     return true;
   };
 
+  const currentPrice = product.specialPrice ?? product.price;
+
+  const originalPrice =
+    product.specialPrice != null && product.specialPrice < product.price
+      ? product.price
+      : product.discount && product.discount > 0
+        ? Math.round(product.price / (1 - product.discount / 100))
+        : null;
+
   const setSelectedProduct = useOrderStore(state => state.setSelectedProduct);
   // const selectedSize = useOrderStore(state => state.selectedSize);
   // const selectedColor = useProductStore(state => state.selectedColor);
@@ -101,31 +110,52 @@ const ProductActions = ({ productId, product }: Props) => {
 
   return (
     <div className="space-y-4">
-      {/* Quantity */}
-      <div>
-        <span className="text-sm text-gray-600 block mb-2">Quantity</span>
+      <div className="flex items-center justify-between gap-3">
+        {/* Quantity */}
+        <div>
+          <span className="text-sm text-gray-600 block mb-2">Quantity</span>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setQuantity(q => Math.max(1, q - 1))}
-            className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
-          >
-            <Minus className="h-4 w-4" />
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setQuantity(q => Math.max(1, q - 1))}
+              className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
+            >
+              <Minus className="h-4 w-4" />
+            </button>
 
-          <span className="w-12 text-center font-semibold text-lg">
-            {quantity}
-          </span>
+            <span className="w-12 text-center font-semibold text-lg">
+              {quantity}
+            </span>
 
-          <button
-            onClick={() => setQuantity(q => q + 1)}
-            className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
-          >
-            <Plus className="h-4 w-4" />
-          </button>
+            <button
+              onClick={() => setQuantity(q => q + 1)}
+              className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
+            >
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+        {/* PRICE */}
+        <div className="bg-gray-50 rounded-sm p-4 mt-5 sm:hidden">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-3xl font-bold text-title">
+              ৳{currentPrice.toLocaleString()}
+            </span>
+
+            {originalPrice && originalPrice > currentPrice && (
+              <span className="text-lg text-gray-400 line-through">
+                ৳{originalPrice.toLocaleString()}
+              </span>
+            )}
+
+            {product.discount && product.discount > 0 && (
+              <span className="text-sm text-green-600 font-semibold">
+                -{product.discount}%
+              </span>
+            )}
+          </div>
         </div>
       </div>
-
       {/* Buttons */}
       <div className="flex gap-3">
         {/* Add To Cart */}

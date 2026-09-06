@@ -35,13 +35,7 @@ const TopDeal = async () => {
         {/* Products Grid */}
         <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 lg:gap-4 xl:grid-cols-5">
           {isProducts.slice(0, 5).map(product => {
-            return (
-              <ProductCard1
-                key={product.id}
-                product={product}
-                isFeatured={true}
-              />
-            );
+            return <ProductCard1 key={product.id} product={product} />;
           })}
         </div>
       </div>

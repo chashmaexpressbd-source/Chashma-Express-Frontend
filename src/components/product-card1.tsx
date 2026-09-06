@@ -99,20 +99,14 @@ const ProductCard1 = ({ product, isFeatured }: ProductCard1Props) => {
           {/* BOTTOM */}
           <div className="mt-2.5">
             {/* ORDER BUTTON */}
-            <Link
-              href={`/products/${product.slug}`}
-              className="block w-full rounded-md bg-[#d90000] px-3 py-2 text-center text-[12px] font-bold text-white transition hover:bg-[#b80000] active:scale-[0.98] sm:py-2.5 sm:text-sm"
-            >
+            <div className="w-full rounded-md bg-[#d90000] px-3 py-2 text-center text-[12px] font-bold text-white transition group-hover:bg-[#b80000] sm:py-2.5 sm:text-sm">
               অর্ডার করুন
-            </Link>
+            </div>
 
             {/* ACTIONS */}
             <div className="mt-2 flex items-center justify-between px-1">
               {/* SAVE */}
-              <Link
-                href={`/products/${product.slug}`}
-                className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-red-500 sm:text-[11px]"
-              >
+              <div className="flex items-center gap-1 text-[10px] text-gray-500 transition group-hover:text-red-500 sm:text-[11px]">
                 <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
                   <path
                     d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.7C3.2 5.9 5.2 4 7.8 4c1.5 0 2.9.7 4.2 2 1.3-1.3 2.7-2 4.2-2 2.6 0 4.6 1.9 4.6 4.7Z"
@@ -123,13 +117,10 @@ const ProductCard1 = ({ product, isFeatured }: ProductCard1Props) => {
                   />
                 </svg>
                 Save
-              </Link>
+              </div>
 
               {/* QUICK VIEW */}
-              <Link
-                href={`/products/${product.slug}`}
-                className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-gray-800 sm:text-[11px]"
-              >
+              <div className="flex items-center gap-1 text-[10px] text-gray-500 transition group-hover:text-gray-800 sm:text-[11px]">
                 <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
                   <path
                     d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
@@ -138,16 +129,10 @@ const ProductCard1 = ({ product, isFeatured }: ProductCard1Props) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="2.5"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                  />
+                  <circle cx="12" cy="12" r="2.5" stroke="currentColor" />
                 </svg>
                 Quick View
-              </Link>
+              </div>
             </div>
           </div>
         </div>

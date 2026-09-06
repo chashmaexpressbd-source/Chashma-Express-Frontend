@@ -164,13 +164,10 @@ const BuyNow = ({ product }: BuyNowProps) => {
 
       const res = await singleOrder(payload);
 
-      if (res?.data?.success) {
-        toast.success('অর্ডার সফলভাবে সম্পন্ন হয়েছে!');
-      }
+      toast.success('অর্ডার সফলভাবে সম্পন্ন হয়েছে!');
 
       // order form backend response
       const orderId = res?.data?.id;
-      console.log(orderId);
 
       if (orderId) {
         router.push(`/thank-you?orderId=${orderId}`);

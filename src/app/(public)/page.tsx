@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <div className="container mx-auto  px-2">
       <Banner></Banner>
-      <Category></Category>
       <TopDeal></TopDeal>
       <Products></Products>
+      <Category></Category>
     </div>
   );
 }

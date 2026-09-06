@@ -79,51 +79,9 @@ const ProductCard1 = ({ product, isFeatured }: ProductCard1Props) => {
               {product.name}
             </h3>
             {/*  description*/}
-            <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-1">
+            {/* <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-1">
               {product.description}
-            </p>
-          </div>
-
-          <div className="space-y-1.5 pt-1">
-            {/* RATING & STOCK */}
-            <div className="flex items-center justify-between text-xs">
-              {/* GOLD FILLED STAR */}
-              <div className="flex items-center gap-1">
-                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                <span className="font-bold text-gray-800 dark:text-gray-200">
-                  {product.rating > 0 ? product.rating.toFixed(1) : '5.0'}
-                </span>
-                <span className="text-[11px] text-gray-400">
-                  ({product.reviewCount || 1})
-                </span>
-              </div>
-
-              {/* STOCK STATUS */}
-              <span
-                className={`text-[11px] font-semibold ${
-                  product.stock > 0
-                    ? 'text-emerald-600 dark:text-emerald-400'
-                    : 'text-rose-500'
-                }`}
-              >
-                {product.stock > 0
-                  ? `${product.stock} in stock`
-                  : 'Out of stock'}
-              </span>
-            </div>
-
-            {/* PRICE */}
-            <div className="flex items-baseline gap-1.5 pt-0.5">
-              <span className="text-base sm:text-lg font-extrabold text-gray-900 dark:text-white tracking-tight">
-                ৳{salePrice.toLocaleString('en-BD')}
-              </span>
-
-              {hasDiscount && (
-                <span className="text-xs text-gray-400 line-through">
-                  ৳{product.price.toLocaleString('en-BD')}
-                </span>
-              )}
-            </div>
+            </p> */}
           </div>
         </CardContent>
       </Card>
@@ -132,3 +90,43 @@ const ProductCard1 = ({ product, isFeatured }: ProductCard1Props) => {
 };
 
 export { ProductCard1 };
+
+//  <div className="space-y-1.5 pt-1">
+//    {/* RATING & STOCK */}
+//    <div className="flex items-center justify-between text-xs">
+//      {/* GOLD FILLED STAR */}
+//      <div className="flex items-center gap-1">
+//        <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+//        <span className="font-bold text-gray-800 dark:text-gray-200">
+//          {product.rating > 0 ? product.rating.toFixed(1) : '5.0'}
+//        </span>
+//        <span className="text-[11px] text-gray-400">
+//          ({product.reviewCount || 1})
+//        </span>
+//      </div>
+
+//      {/* STOCK STATUS */}
+//      <span
+//        className={`text-[11px] font-semibold ${
+//          product.stock > 0
+//            ? 'text-emerald-600 dark:text-emerald-400'
+//            : 'text-rose-500'
+//        }`}
+//      >
+//        {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+//      </span>
+//    </div>
+
+//    {/* PRICE */}
+//    <div className="flex items-baseline gap-1.5 pt-0.5">
+//      <span className="text-base sm:text-lg font-extrabold text-gray-900 dark:text-white tracking-tight">
+//        ৳{salePrice.toLocaleString('en-BD')}
+//      </span>
+
+//      {hasDiscount && (
+//        <span className="text-xs text-gray-400 line-through">
+//          ৳{product.price.toLocaleString('en-BD')}
+//        </span>
+//      )}
+//    </div>
+//  </div>;

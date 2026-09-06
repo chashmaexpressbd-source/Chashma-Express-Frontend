@@ -41,18 +41,18 @@ const ProductActions = ({ productId, product }: Props) => {
   };
 
   const setSelectedProduct = useOrderStore(state => state.setSelectedProduct);
-  const selectedSize = useOrderStore(state => state.selectedSize);
-  const selectedColor = useProductStore(state => state.selectedColor);
+  // const selectedSize = useOrderStore(state => state.selectedSize);
+  // const selectedColor = useProductStore(state => state.selectedColor);
 
   const handleBuyNow = () => {
-    if (product.colorVariants?.length > 0 && !selectedColor) {
-      toast.error('দয়া করে একটি কালার নির্বাচন করুন।');
-      return;
-    }
-    if (product.colorVariants?.length > 0 && !selectedSize) {
-      toast.error('দয়া করে একটি সাইজ নির্বাচন করুন।');
-      return;
-    }
+    // if (product.colorVariants?.length > 0 && !selectedColor) {
+    //   toast.error('দয়া করে একটি কালার নির্বাচন করুন।');
+    //   return;
+    // }
+    // if (product.colorVariants?.length > 0 && !selectedSize) {
+    //   toast.error('দয়া করে একটি সাইজ নির্বাচন করুন।');
+    //   return;
+    // }
 
     setSelectedProduct(product);
 
@@ -128,16 +128,6 @@ const ProductActions = ({ productId, product }: Props) => {
 
       {/* Buttons */}
       <div className="flex gap-3">
-        {/* Buy Now */}
-
-        <button
-          onClick={handleBuyNow}
-          disabled={loading || wishlistLoading}
-          className="flex-1 bg-button text-button-text py-3 rounded-lg font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
-        >
-          Buy Now
-        </button>
-
         {/* Add To Cart */}
         <button
           onClick={handleAddToCart}
@@ -151,6 +141,15 @@ const ProductActions = ({ productId, product }: Props) => {
           )}
 
           {loading ? 'Adding...' : 'Add to Cart'}
+        </button>
+        {/* Buy Now */}
+
+        <button
+          onClick={handleBuyNow}
+          disabled={loading || wishlistLoading}
+          className="flex-1 bg-button text-button-text py-3 rounded-lg font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
+        >
+          Order Now
         </button>
 
         {/* Wishlist */}

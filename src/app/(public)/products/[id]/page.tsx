@@ -1,3 +1,4 @@
+import ProductActions from '@/components/layouts/public/cart/ProductActions';
 import ProductGallery from '@/components/layouts/public/product-details/ProductGallery';
 import ProductPurchaseOptions from '@/components/layouts/public/product-details/ProductPurchaseOptions';
 import ProductReviews from '@/components/layouts/public/product-details/ProductReviews';
@@ -69,7 +70,7 @@ export default async function ProductDetailsPage({
 
         <ChevronRight className="h-3.5 w-3.5" />
 
-        <span className="text-gray-800 truncate max-w-[250px]">
+        <span className="text-gray-800 truncate max-w-[150px]">
           {product.name}
         </span>
       </div>
@@ -90,6 +91,12 @@ export default async function ProductDetailsPage({
               images={product.images || []}
               productName={product.name}
             />
+          </div>
+
+          {/* only for mobile */}
+          <div className=" sm:hidden">
+            {/* Actions */}
+            <ProductActions product={product} productId={product.id} />
           </div>
 
           {/* =================================================

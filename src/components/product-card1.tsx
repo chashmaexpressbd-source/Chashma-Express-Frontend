@@ -31,14 +31,32 @@ const ProductCard1 = ({ product, isFeatured }: ProductCard1Props) => {
       <Card className="h-full overflow-hidden border border-gray-200/80 dark:border-gray-800 bg-white dark:bg-slate-900  shadow-xs  flex flex-col justify-between p-0">
         {/* IMAGE CONTAINER (FLUSH TO EDGES WITH NO TOP GAP) */}
         <div className="relative w-full overflow-hidden bg-gray-100 dark:bg-slate-800">
-          <AspectRatio ratio={1.15} className="w-full">
+          <AspectRatio ratio={1.15} className="relative w-full">
             {product.thumbnail ? (
               <Image
                 src={product.thumbnail}
                 alt={product.name}
                 fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                priority={false}
+                sizes="
+                  (max-width: 640px) 50vw,
+                  (max-width: 768px) 33vw,
+                  (max-width: 1024px) 25vw,
+                  20vw
+                "
+                className="
+                  absolute
+                  inset-0
+                  h-full
+                  w-full
+                  object-contain
+                  object-center
+                  p-0
+                  m-0
+                  transition-transform
+                  duration-500
+                  group-hover:scale-[1.02]
+                "
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center">

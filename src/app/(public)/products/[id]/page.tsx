@@ -49,7 +49,7 @@ export default async function ProductDetailsPage({
         : null;
 
   return (
-    <div className="container mx-auto px-3 md:px-4 py-8 md:py-10">
+    <div className="container mx-auto px-2 md:px-4 py-8 md:py-10">
       {/* =====================================================
           BREADCRUMB
       ====================================================== */}
@@ -70,7 +70,7 @@ export default async function ProductDetailsPage({
 
         <ChevronRight className="h-3.5 w-3.5" />
 
-        <span className="text-gray-800 truncate max-w-[150px]">
+        <span className="text-gray-800 truncate max-w-[100px]">
           {product.name}
         </span>
       </div>
@@ -80,7 +80,7 @@ export default async function ProductDetailsPage({
       ====================================================== */}
 
       <div className="bg-white rounded-sm shadow-sm border border-gray-100 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-3 md:p-7">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-7 p-3 md:p-7">
           {/* =================================================
               LEFT SIDE - IMAGE GALLERY
           ================================================== */}
@@ -117,7 +117,7 @@ export default async function ProductDetailsPage({
 
             {/* Product Name */}
 
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800 mt-1">
+            <h1 className="text-xl md:text-2xl font-bold text-gray-800 mt-1 hidden sm:block">
               {product.name}
             </h1>
 

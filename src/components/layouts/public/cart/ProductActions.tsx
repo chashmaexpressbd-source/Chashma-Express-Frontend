@@ -109,7 +109,13 @@ const ProductActions = ({ productId, product }: Props) => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
+      {/* Product Name */}
+
+      <h1 className="text-xl md:text-2xl font-bold text-gray-800 mt-1 ms:hidden">
+        {product.name}
+      </h1>
+
       <div className="flex items-center justify-between gap-3">
         {/* Quantity */}
         <div>
@@ -118,7 +124,7 @@ const ProductActions = ({ productId, product }: Props) => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setQuantity(q => Math.max(1, q - 1))}
-              className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
+              className="w-9 h-9 border rounded-sm flex items-center justify-center hover:bg-gray-100 transition"
             >
               <Minus className="h-4 w-4" />
             </button>
@@ -129,16 +135,16 @@ const ProductActions = ({ productId, product }: Props) => {
 
             <button
               onClick={() => setQuantity(q => q + 1)}
-              className="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
+              className="w-9 h-9 border rounded-sm flex items-center justify-center hover:bg-gray-100 transition"
             >
               <Plus className="h-4 w-4" />
             </button>
           </div>
         </div>
         {/* PRICE */}
-        <div className="bg-gray-50 rounded-sm p-4 mt-5 sm:hidden">
+        <div className=" rounded-sm p-4 mt-5 sm:hidden">
           <div className="flex items-center gap-3 flex-wrap">
-            <span className="text-3xl font-bold text-title">
+            <span className="text-xl font-bold text-title">
               ৳{currentPrice.toLocaleString()}
             </span>
 
@@ -162,7 +168,7 @@ const ProductActions = ({ productId, product }: Props) => {
         <button
           onClick={handleAddToCart}
           disabled={loading || wishlistLoading}
-          className="flex-1 border-2 border-primary-light text-title py-3 rounded-lg font-semibold hover:bg-button-hover-1 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+          className="flex-1 border-2 border-primary-light text-title py-3 rounded-sm font-semibold hover:bg-button-hover-1 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {loading ? (
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -177,16 +183,16 @@ const ProductActions = ({ productId, product }: Props) => {
         <button
           onClick={handleBuyNow}
           disabled={loading || wishlistLoading}
-          className="flex-1 bg-button text-button-text py-3 rounded-lg font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
+          className="flex-1 bg-button text-button-text py-3 rounded-sm font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
         >
-          Order Now
+          অর্ডার করুন
         </button>
 
         {/* Wishlist */}
         <button
           onClick={handleAddWishlist}
           disabled={wishlistLoading || loading}
-          className="w-14 border-2 border-primary-light text-title rounded-lg flex items-center justify-center hover:bg-button-hover-1 transition disabled:opacity-50"
+          className="w-14 border-2 border-primary-light text-title rounded-sm flex items-center justify-center hover:bg-button-hover-1 transition disabled:opacity-50"
         >
           {wishlistLoading ? (
             <Loader2 className="h-5 w-5 animate-spin" />

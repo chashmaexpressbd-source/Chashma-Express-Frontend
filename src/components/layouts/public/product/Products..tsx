@@ -10,7 +10,7 @@ const Products = async () => {
 
   return (
     <div className="w-full pb-10 bg-white">
-      <div className="container mx-auto md:px-0">
+      <div className="container mx-auto sm:px-4 md:px-5 lg:px-0">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800">

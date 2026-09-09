@@ -17,45 +17,40 @@ const getAuthHeaders = () => ({
   'Content-Type': 'application/json',
 });
 
+// ==========================================
 // CREATE ORDER
+// No Token Required
+// ==========================================
 
-export const createOrder = async ({
-  name,
-  phone,
-  district,
-  thana,
-  address,
-  note,
-  isInsideDhaka,
-}: CheckoutPayload) => {
-  const payload = {
-    name,
-    phone,
-    district,
-    thana,
-    address,
-    note,
-    isInsideDhaka,
-  };
-
+export const createOrder = async (payload: CheckoutPayload) => {
   const res = await axios.post(`${BASE_URL}/orders/checkout`, payload, {
-    headers: getAuthHeaders(),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   return res.data;
 };
 
+// ==========================================
 // BUY NOW
+// No Token Required
+// ==========================================
 
 export const singleOrder = async (payload: ISingleOrder) => {
   const res = await axios.post(`${BASE_URL}/orders/buy-now`, payload, {
-    headers: getAuthHeaders(),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   return res.data;
 };
 
+// ==========================================
 // GET ALL ORDERS
+// Token Required
+// ==========================================
 
 export const getAllOrders = async (params?: GetAllOrdersParams) => {
   const res = await axios.get(`${BASE_URL}/orders/all`, {
@@ -64,10 +59,14 @@ export const getAllOrders = async (params?: GetAllOrdersParams) => {
   });
 
   console.log(res);
+
   return res.data;
 };
 
+// ==========================================
 // GET USER ORDERS
+// Token Required
+// ==========================================
 
 export const getOrdersByUser = async () => {
   const res = await axios.get(`${BASE_URL}/orders`, {
@@ -77,15 +76,25 @@ export const getOrdersByUser = async () => {
   return res.data;
 };
 
-// get single order
+// ==========================================
+// GET SINGLE ORDER
+// Token Required
+// ==========================================
+
 export const getOrderById = async (orderId: string) => {
-  const response = await axios.get(`${BASE_URL}/orders/${orderId}`);
+  const response = await axios.get(`${BASE_URL}/orders/${orderId}`, {
+    headers: getAuthHeaders(),
+  });
+
   console.log(response);
 
   return response.data;
 };
 
+// ==========================================
 // UPDATE ORDER STATUS
+// Token Required
+// ==========================================
 
 export const updateOrderStatus = async (
   orderId: string,
@@ -108,7 +117,10 @@ export const updateOrderStatus = async (
   return res.data;
 };
 
+// ==========================================
 // UPDATE ORDER
+// Token Required
+// ==========================================
 
 export const updateOrder = async (
   orderId: string,
@@ -125,7 +137,10 @@ export const updateOrder = async (
   return res.data;
 };
 
+// ==========================================
 // DELETE ORDER
+// Token Required
+// ==========================================
 
 export const deleteOrder = async (orderId: string) => {
   if (!orderId) {

@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState } from 'react';
-import { Heart, Loader2, Minus, Plus, ShoppingCart } from 'lucide-react';
-import { addToCart } from '@/services/cart.service';
+import { Heart, Loader2, ShoppingCart } from 'lucide-react';
 import { createWishlist } from '@/services/wishlist.service';
 import { useCartStore } from '@/store/cart.store';
 import { IProduct } from '@/types/products.type';
@@ -11,15 +11,13 @@ import { usePathname, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useOrderStore } from '@/store/order.store';
 
-import { useProductStore } from '@/store/product.store';
-
 type Props = {
   productId: string;
   product: IProduct;
 };
 
 const ProductActions = ({ productId, product }: Props) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity] = useState(1);
   const [loading, setLoading] = useState(false);
   const [wishlistLoading, setWishlistLoading] = useState(false);
 
@@ -28,7 +26,11 @@ const ProductActions = ({ productId, product }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const increase = useCartStore(state => state.increase);
+  // Zustand Cart Store
+  const addToCart = useCartStore(state => state.addToCart);
+
+  // Zustand Order Store
+  const setSelectedProduct = useOrderStore(state => state.setSelectedProduct);
 
   // LOGIN CHECK
   const handleRequireLogin = () => {
@@ -40,6 +42,7 @@ const ProductActions = ({ productId, product }: Props) => {
     return true;
   };
 
+  // PRICE
   const currentPrice = product.specialPrice ?? product.price;
 
   const originalPrice =
@@ -49,20 +52,8 @@ const ProductActions = ({ productId, product }: Props) => {
         ? Math.round(product.price / (1 - product.discount / 100))
         : null;
 
-  const setSelectedProduct = useOrderStore(state => state.setSelectedProduct);
-  // const selectedSize = useOrderStore(state => state.selectedSize);
-  // const selectedColor = useProductStore(state => state.selectedColor);
-
+  // BUY NOW
   const handleBuyNow = () => {
-    // if (product.colorVariants?.length > 0 && !selectedColor) {
-    //   toast.error('দয়া করে একটি কালার নির্বাচন করুন।');
-    //   return;
-    // }
-    // if (product.colorVariants?.length > 0 && !selectedSize) {
-    //   toast.error('দয়া করে একটি সাইজ নির্বাচন করুন।');
-    //   return;
-    // }
-
     setSelectedProduct(product);
 
     router.push('/order-now');
@@ -71,14 +62,16 @@ const ProductActions = ({ productId, product }: Props) => {
   // ADD TO CART
   const handleAddToCart = async () => {
     if (!handleRequireLogin()) return;
+
     try {
       setLoading(true);
 
-      await addToCart(productId, quantity);
+      // Add product to Zustand cart
+      addToCart(product, quantity);
 
-      increase(quantity);
       toast.success('Added to cart!');
     } catch (error) {
+      console.error('Add to cart error:', error);
       toast.error('Products Add Failed!');
     } finally {
       setLoading(false);
@@ -97,13 +90,11 @@ const ProductActions = ({ productId, product }: Props) => {
       });
 
       toast.success('Added to wishlist!');
-
-      setWishlistLoading(false);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      const message = error.response?.data?.error || 'Failed to add wishlist';
-      toast.error(message);
+      const message = error?.response?.data?.error || 'Failed to add wishlist';
 
+      toast.error(message);
+    } finally {
       setWishlistLoading(false);
     }
   };
@@ -111,25 +102,27 @@ const ProductActions = ({ productId, product }: Props) => {
   return (
     <div className="space-y-2">
       {/* Product Name */}
-
       <h1 className="text-xl md:text-2xl font-bold text-gray-800 mt-1 ms:hidden">
         {product.name}
       </h1>
 
+      {/* Price */}
       <div className="flex items-center justify-between gap-3 py-1.5">
-        {/* PRICE */}
-        <div className=" rounded-sm  sm:hidden">
+        <div className="rounded-sm sm:hidden">
           <div className="flex items-center gap-3 flex-wrap">
+            {/* Current Price */}
             <span className="text-xl font-bold text-title">
               ৳{currentPrice.toLocaleString()}
             </span>
 
+            {/* Original Price */}
             {originalPrice && originalPrice > currentPrice && (
               <span className="text-lg text-gray-400 line-through">
                 ৳{originalPrice.toLocaleString()}
               </span>
             )}
 
+            {/* Discount */}
             {product.discount && product.discount > 0 && (
               <span className="text-sm text-green-600 font-semibold">
                 -{product.discount}%
@@ -137,38 +130,36 @@ const ProductActions = ({ productId, product }: Props) => {
             )}
           </div>
         </div>
-        {/* Quantity */}
-        {/* <div>
-         
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setQuantity(q => Math.max(1, q - 1))}
-              className="w-9 h-9 border rounded-sm flex items-center justify-center hover:bg-gray-100 transition"
-            >
-              <Minus className="h-4 w-4" />
-            </button>
-
-            <span className="w-12 text-center font-semibold text-lg">
-              {quantity}
-            </span>
-
-            <button
-              onClick={() => setQuantity(q => q + 1)}
-              className="w-9 h-9 border rounded-sm flex items-center justify-center hover:bg-gray-100 transition"
-            >
-              <Plus className="h-4 w-4" />
-            </button>
-          </div>
-        </div> */}
       </div>
+
       {/* Buttons */}
       <div className="flex gap-2 sm:gap-3">
         {/* Add To Cart */}
         <button
+          type="button"
           onClick={handleAddToCart}
           disabled={loading || wishlistLoading}
-          className="flex-1 border-2 border-primary-light text-title py-2.5 sm:py-3 rounded-sm text-xs sm:text-sm font-semibold hover:bg-button-hover-1 transition-colors flex items-center justify-center gap-1.5 sm:gap-2 disabled:opacity-50"
+          className="
+            flex-1
+            border-2
+            border-primary-light
+            text-title
+            py-2.5
+            sm:py-3
+            rounded-sm
+            text-xs
+            sm:text-sm
+            font-semibold
+            hover:bg-button-hover-1
+            transition-colors
+            flex
+            items-center
+            justify-center
+            gap-1.5
+            sm:gap-2
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+          "
         >
           {loading ? (
             <Loader2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin" />
@@ -181,18 +172,50 @@ const ProductActions = ({ productId, product }: Props) => {
 
         {/* Buy Now */}
         <button
+          type="button"
           onClick={handleBuyNow}
           disabled={loading || wishlistLoading}
-          className="flex-1 bg-button text-button-text py-2.5 sm:py-3 rounded-sm text-xs sm:text-sm font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
+          className="
+            flex-1
+            bg-button
+            text-button-text
+            py-2.5
+            sm:py-3
+            rounded-sm
+            text-xs
+            sm:text-sm
+            font-semibold
+            hover:bg-button-hover
+            transition-colors
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+            cursor-pointer
+          "
         >
           অর্ডার করুন
         </button>
 
         {/* Wishlist */}
         <button
+          type="button"
           onClick={handleAddWishlist}
           disabled={wishlistLoading || loading}
-          className="w-11 sm:w-14 border-2 border-primary-light text-title rounded-sm flex items-center justify-center hover:bg-button-hover-1 transition disabled:opacity-50"
+          aria-label="Add to wishlist"
+          className="
+            w-11
+            sm:w-14
+            border-2
+            border-primary-light
+            text-title
+            rounded-sm
+            flex
+            items-center
+            justify-center
+            hover:bg-button-hover-1
+            transition
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+          "
         >
           {wishlistLoading ? (
             <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin" />

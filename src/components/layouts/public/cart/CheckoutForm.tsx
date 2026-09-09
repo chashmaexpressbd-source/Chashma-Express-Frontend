@@ -1,15 +1,17 @@
 'use client';
 
 import { createOrder } from '@/services/orders.service';
-import { useCartStore } from '@/store/cart.store';
+import { CartItem, useCartStore } from '@/store/cart.store';
+
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 
 type CheckoutFormProps = {
   subtotal: number;
+  items: CartItem[];
 };
 
-const CheckoutForm = ({ subtotal }: CheckoutFormProps) => {
+const CheckoutForm = ({ subtotal, items }: CheckoutFormProps) => {
   const [insideDhaka, setInsideDhaka] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +22,7 @@ const CheckoutForm = ({ subtotal }: CheckoutFormProps) => {
   const [address, setAddress] = useState('');
   const [note, setNote] = useState('');
 
-  const { reset, fetchCart } = useCartStore.getState();
+  const { clearCart } = useCartStore.getState();
 
   // shipping fee match in Backend
   const shippingFee = insideDhaka ? 90 : 130;
@@ -34,10 +36,22 @@ const CheckoutForm = ({ subtotal }: CheckoutFormProps) => {
   const handleOrder = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!items || items.length === 0) {
+      toast.error('Your cart is empty!');
+      return;
+    }
+
     try {
       setLoading(true);
 
-      await createOrder({
+      const orderItems = items.map(item => ({
+        productId: item.product.id,
+        name: item.product.name,
+        price: Number(item.product.specialPrice ?? item.product.price),
+        quantity: item.quantity,
+      }));
+
+      const res = await createOrder({
         name,
         phone,
         district,
@@ -45,15 +59,16 @@ const CheckoutForm = ({ subtotal }: CheckoutFormProps) => {
         address,
         note: note || undefined,
         isInsideDhaka: insideDhaka,
+        items: orderItems,
       });
 
-      toast.success('Order placed successfully!');
+      console.log(res);
+      if (res.success) {
+        toast.success('Order placed successfully!');
+      }
 
-      // Clear cart state
-      reset();
-
-      // Refresh cart
-      await fetchCart();
+      // Clear Zustand cart
+      clearCart();
 
       // Reset form
       setName('');
@@ -65,8 +80,6 @@ const CheckoutForm = ({ subtotal }: CheckoutFormProps) => {
       setInsideDhaka(true);
     } catch (error) {
       console.error('Order failed:', error);
-
-      toast.error('Order failed! Please try again.');
     } finally {
       setLoading(false);
     }

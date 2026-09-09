@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { PromoBanner1 } from '@/components/promo-banner1';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
-import { useCartStore } from '@/store/cart.store';
+
 import { getUser } from '@/utils/auth';
 import Image from 'next/image';
 import UserDropdown from './UserDropdown';
@@ -16,14 +16,18 @@ import DesktopNav from './DesktopNav';
 import RightDesktopNev from './RightDesktopNev';
 import MobileSidebar from './MobileSidebar';
 import { IUser } from '@/types/auth';
+import { useCartStore } from '@/store/cart.store';
 
 const PublicNavbar = ({ className }: { className?: string }) => {
   const [scrolled, setScrolled] = useState(false);
 
-  const fetchCart = useCartStore(state => state.fetchCart);
-  const count = useCartStore(state => state.count);
-
   const [user, setUser] = useState<IUser | null>(null);
+
+  // Get cart items from Zustand
+  const cartItems = useCartStore(state => state.items);
+
+  // Total quantity
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     const currentUser = getUser();
@@ -32,10 +36,6 @@ const PublicNavbar = ({ className }: { className?: string }) => {
       queueMicrotask(() => setUser(currentUser));
     }
   }, []);
-
-  useEffect(() => {
-    fetchCart();
-  }, [fetchCart]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,7 +101,7 @@ const PublicNavbar = ({ className }: { className?: string }) => {
                 <Link href="/cart">
                   <ShoppingCart className="h-5 w-5" />
                   <span className="absolute -top-4 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-white">
-                    {count}
+                    {cartCount}
                   </span>
                 </Link>
               </div>

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProductColor {
   color: string;
@@ -605,17 +606,17 @@ const AIChatModal: React.FC<AIChatModalProps> = ({ isOpen, onClose }) => {
 
                                     <div className="relative w-full h-[145px] sm:h-[155px] bg-gray-100 overflow-hidden">
                                       {product.thumbnail ? (
-                                        <img
+                                        <Image
                                           src={product.thumbnail}
                                           alt={product.name}
+                                          fill
+                                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                           className="
-                                              w-full
-                                              h-full
-                                              object-cover
-                                              group-hover:scale-105
-                                              transition-transform
-                                              duration-300
-                                            "
+    object-cover
+    group-hover:scale-105
+    transition-transform
+    duration-300
+  "
                                         />
                                       ) : (
                                         <div className="w-full h-full flex items-center justify-center text-gray-400">

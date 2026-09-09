@@ -117,9 +117,31 @@ const ProductActions = ({ productId, product }: Props) => {
       </h1>
 
       <div className="flex items-center justify-between gap-3">
+        {/* PRICE */}
+        <div className=" rounded-sm p-4 mt-5 sm:hidden">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-xl font-bold text-title">
+              ৳{currentPrice.toLocaleString()}
+            </span>
+
+            {originalPrice && originalPrice > currentPrice && (
+              <span className="text-lg text-gray-400 line-through">
+                ৳{originalPrice.toLocaleString()}
+              </span>
+            )}
+
+            {product.discount && product.discount > 0 && (
+              <span className="text-sm text-green-600 font-semibold">
+                -{product.discount}%
+              </span>
+            )}
+          </div>
+        </div>
         {/* Quantity */}
         <div>
-          <span className="text-sm text-gray-600 block mb-2">Quantity</span>
+          <span className="text-sm text-right text-gray-600 block mb-2">
+            Quantity
+          </span>
 
           <div className="flex items-center gap-3">
             <button
@@ -139,26 +161,6 @@ const ProductActions = ({ productId, product }: Props) => {
             >
               <Plus className="h-4 w-4" />
             </button>
-          </div>
-        </div>
-        {/* PRICE */}
-        <div className=" rounded-sm p-4 mt-5 sm:hidden">
-          <div className="flex items-center gap-3 flex-wrap">
-            <span className="text-xl font-bold text-title">
-              ৳{currentPrice.toLocaleString()}
-            </span>
-
-            {originalPrice && originalPrice > currentPrice && (
-              <span className="text-lg text-gray-400 line-through">
-                ৳{originalPrice.toLocaleString()}
-              </span>
-            )}
-
-            {product.discount && product.discount > 0 && (
-              <span className="text-sm text-green-600 font-semibold">
-                -{product.discount}%
-              </span>
-            )}
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
-import { PromoBanner1 } from '@/components/promo-banner1';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 
@@ -50,13 +49,13 @@ const PublicNavbar = ({ className }: { className?: string }) => {
       className={cn('border-b bg-white sticky top-0 z-50 w-full', className)}
     >
       {/* Promo Banner */}
-      <div
+      {/* <div
         className={`transition-all duration-300 overflow-hidden ${
           scrolled ? 'max-h-0 opacity-0' : 'max-h-[100px] opacity-100'
         }`}
       >
         <PromoBanner1 />
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-3 sm:px-4">
         {/* Top Navbar */}

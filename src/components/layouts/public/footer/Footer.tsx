@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Clock, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -27,21 +28,21 @@ const Footer = () => {
 
   const SOCIAL_ICONS = [
     {
-      title: 'Facebook',
-      src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg',
-      link: '#',
+      title: '',
+      src: '',
+      link: 'https://www.facebook.com/chashmaexpressbd/',
     },
-    {
-      title: 'X',
-      src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/x.svg',
-      className: 'dark:invert',
-      link: '#',
-    },
-    {
-      title: 'Instagram',
-      src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg',
-      link: '#',
-    },
+    // {
+    //   title: 'X',
+    //   src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/x.svg',
+    //   className: 'dark:invert',
+    //   link: '#',
+    // },
+    // {
+    //   title: 'Instagram',
+    //   src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/instagram-icon.svg',
+    //   link: '#',
+    // },
   ];
   return (
     <footer className="bg-white text-gray-600 border-t border-gray-200">
@@ -65,12 +66,6 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm">
-                <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
-                <span className="text-gray-500">
-                  Naogaon, Sadar (Online Store)
-                </span>
-              </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
                 <span className="text-gray-500">+8801307444883</span>
@@ -138,16 +133,20 @@ const Footer = () => {
             </div>
             {/* Social Icons */}
             <div className="flex gap-3">
-              {SOCIAL_ICONS.map((social, idx) => (
+              <Link
+                href="https://www.facebook.com/chashmaexpressbd/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
-                  key={idx}
-                  src={social.src}
-                  alt={social.title}
+                  src={
+                    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg'
+                  }
+                  alt={'facebook'}
                   width={24}
                   height={24}
-                  className={`h-6 w-6 ${social.className || ''}`}
                 />
-              ))}
+              </Link>
             </div>
 
             {/* Payment Methods with Real Icons */}

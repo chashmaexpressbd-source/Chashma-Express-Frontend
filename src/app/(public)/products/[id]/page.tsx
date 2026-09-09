@@ -1,7 +1,7 @@
 import ProductActions from '@/components/layouts/public/cart/ProductActions';
 import ProductGallery from '@/components/layouts/public/product-details/ProductGallery';
 import ProductPurchaseOptions from '@/components/layouts/public/product-details/ProductPurchaseOptions';
-import ProductReviews from '@/components/layouts/public/product-details/ProductReviews';
+// import ProductReviews from '@/components/layouts/public/product-details/ProductReviews';
 import RelatedProduct from '@/components/layouts/public/product-details/RelatedProduct';
 import { getSingleProduct } from '@/services/product.service';
 import { Star, Truck, MapPin, CheckCircle, ChevronRight } from 'lucide-react';
@@ -131,7 +131,7 @@ export default async function ProductDetailsPage({
 
             {/* Rating */}
 
-            <div className="flex items-center gap-3 mt-4">
+            {/* <div className="flex items-center gap-3 mt-4">
               <div className="flex items-center gap-1">
                 <Star
                   className={`h-4 w-4 ${
@@ -159,7 +159,7 @@ export default async function ProductDetailsPage({
               <span className="text-sm text-gray-500">
                 {product.viewCount || 0} Views
               </span>
-            </div>
+            </div> */}
 
             {/* =================================================
                 PRICE
@@ -376,11 +376,11 @@ export default async function ProductDetailsPage({
       ====================================================== */}
 
       {/* Reviews */}
-      <ProductReviews
+      {/* <ProductReviews
         reviews={product.reviews || []}
         rating={product.rating}
         reviewCount={product.reviewCount}
-      />
+      /> */}
 
       {/* related product */}
       <RelatedProduct categoryId={product.categoryId}></RelatedProduct>

@@ -46,7 +46,7 @@ const BuyNow = ({ product }: BuyNowProps) => {
   });
 
   // Delivery charge
-  const shippingFee = form.isInsideDhaka ? 90 : 130;
+  const shippingFee = form.isInsideDhaka ? 90 : 120;
 
   // Effective unit price
   const unitPrice =
@@ -553,7 +553,7 @@ const BuyNow = ({ product }: BuyNowProps) => {
                         </p>
                         <p className="text-[11px] text-slate-500">
                           ডেলিভারি চার্জ:{' '}
-                          <span className="font-bold text-slate-900">৳১৩০</span>
+                          <span className="font-bold text-slate-900">৳১২০</span>
                         </p>
                       </div>
                     </button>

@@ -196,9 +196,9 @@ const BuyNow = ({ product }: BuyNowProps) => {
 
   return (
     <div className="min-h-screen bg-slate-50/70 py-8 md:py-12">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="container mx-auto max-w-7xl px-2 sm:px-6">
         {/* PAGE HEADER */}
-        <div className="mb-6 border-b border-slate-200/80 pb-4">
+        <div className="mb-6 p-1 md:p-0 border-b border-slate-200/80 pb-4">
           <div className="flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
               <ShoppingBag className="h-4 w-4" />
@@ -221,7 +221,7 @@ const BuyNow = ({ product }: BuyNowProps) => {
             {/* =====================================================
                 LEFT SIDE - ORDER SUMMARY (5 COLS)
             ====================================================== */}
-            <div className="bg-slate-50/50 p-6 lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="bg-slate-50/50 p-3 lg:col-span-5 flex flex-col justify-between space-y-6">
               <div>
                 <h2 className="mb-4 text-base font-semibold text-slate-900 border-b border-slate-200/80 pb-3">
                   অর্ডার সামারি
@@ -381,7 +381,7 @@ const BuyNow = ({ product }: BuyNowProps) => {
             {/* =====================================================
                 RIGHT SIDE - CHECKOUT FORM (7 COLS)
             ====================================================== */}
-            <div className="p-6 lg:col-span-7 space-y-5">
+            <div className="p-3 lg:col-span-7 space-y-5">
               <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-700">
                   <User className="h-4 w-4" />

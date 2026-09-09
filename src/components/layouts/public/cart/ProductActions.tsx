@@ -116,9 +116,9 @@ const ProductActions = ({ productId, product }: Props) => {
         {product.name}
       </h1>
 
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-3 py-1.5">
         {/* PRICE */}
-        <div className=" rounded-sm p-4 mt-5 sm:hidden">
+        <div className=" rounded-sm  sm:hidden">
           <div className="flex items-center gap-3 flex-wrap">
             <span className="text-xl font-bold text-title">
               ৳{currentPrice.toLocaleString()}
@@ -138,10 +138,8 @@ const ProductActions = ({ productId, product }: Props) => {
           </div>
         </div>
         {/* Quantity */}
-        <div>
-          <span className="text-sm text-right text-gray-600 block mb-2">
-            Quantity
-          </span>
+        {/* <div>
+         
 
           <div className="flex items-center gap-3">
             <button
@@ -162,30 +160,30 @@ const ProductActions = ({ productId, product }: Props) => {
               <Plus className="h-4 w-4" />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* Buttons */}
-      <div className="flex gap-3">
+      <div className="flex gap-2 sm:gap-3">
         {/* Add To Cart */}
         <button
           onClick={handleAddToCart}
           disabled={loading || wishlistLoading}
-          className="flex-1 border-2 border-primary-light text-title py-3 rounded-sm font-semibold hover:bg-button-hover-1 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+          className="flex-1 border-2 border-primary-light text-title py-2.5 sm:py-3 rounded-sm text-xs sm:text-sm font-semibold hover:bg-button-hover-1 transition-colors flex items-center justify-center gap-1.5 sm:gap-2 disabled:opacity-50"
         >
           {loading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
+            <Loader2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin" />
           ) : (
-            <ShoppingCart className="h-4 w-4" />
+            <ShoppingCart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           )}
 
           {loading ? 'Adding...' : 'Add to Cart'}
         </button>
-        {/* Buy Now */}
 
+        {/* Buy Now */}
         <button
           onClick={handleBuyNow}
           disabled={loading || wishlistLoading}
-          className="flex-1 bg-button text-button-text py-3 rounded-sm font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
+          className="flex-1 bg-button text-button-text py-2.5 sm:py-3 rounded-sm text-xs sm:text-sm font-semibold hover:bg-button-hover transition-colors disabled:opacity-50 cursor-pointer"
         >
           অর্ডার করুন
         </button>
@@ -194,12 +192,12 @@ const ProductActions = ({ productId, product }: Props) => {
         <button
           onClick={handleAddWishlist}
           disabled={wishlistLoading || loading}
-          className="w-14 border-2 border-primary-light text-title rounded-sm flex items-center justify-center hover:bg-button-hover-1 transition disabled:opacity-50"
+          className="w-11 sm:w-14 border-2 border-primary-light text-title rounded-sm flex items-center justify-center hover:bg-button-hover-1 transition disabled:opacity-50"
         >
           {wishlistLoading ? (
-            <Loader2 className="h-5 w-5 animate-spin" />
+            <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
           ) : (
-            <Heart className="h-5 w-5" />
+            <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
           )}
         </button>
       </div>

@@ -320,14 +320,7 @@ export default async function ProductDetailsPage({
               </div>
             )}
 
-            {product.material && (
-              <div className="flex justify-between border-b pb-3">
-                <span className="text-sm text-gray-500">Material</span>
-                <span className="text-sm font-medium text-gray-800">
-                  {product.material}
-                </span>
-              </div>
-            )}
+           
 
             {product.weight != null && (
               <div className="flex justify-between border-b pb-3">

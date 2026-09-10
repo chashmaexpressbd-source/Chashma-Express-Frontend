@@ -43,7 +43,7 @@ export const SpecificationAndPricingSection = ({
           />
 
           <FormInput
-            label="Material"
+            label="Frame Material"
             name="material"
             placeholder="e.g. Mesh, Leather"
             value={formData.material}

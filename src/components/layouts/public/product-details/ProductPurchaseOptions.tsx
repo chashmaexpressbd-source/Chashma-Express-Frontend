@@ -84,7 +84,7 @@ const ProductPurchaseOptions = ({ product }: Props) => {
           <div>
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-sm font-semibold text-gray-800">
-                Frame Colors &amp; Material
+                Frame Colors
               </h3>
             </div>
 
@@ -111,6 +111,25 @@ const ProductPurchaseOptions = ({ product }: Props) => {
                   </button>
                 );
               })}
+            </div>
+          </div>
+        )}
+        {/* frame Material*/}
+        {product.material && (
+          <div>
+            <div className="mb-3 flex items-center justify-between">
+              <h3 className="text-sm font-semibold text-gray-800">
+                Frame Material
+              </h3>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                className={`rounded-sm border px-3 py-2.5 transition-all `}
+              >
+                <div className="text-sm font-semibold">{product.material}</div>
+              </button>
             </div>
           </div>
         )}

@@ -244,7 +244,7 @@ const ColorVariantCard = ({
               <thead>
                 <tr className="border-b-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
                   <th className="px-2 py-2.5 text-gray-600 dark:text-gray-400 font-semibold">
-                    Frame Colors &amp; Material *
+                    Frame Colors *
                   </th>
                   <th className="px-2 py-2.5 text-gray-600 dark:text-gray-400 font-semibold">
                     Price ৳ *

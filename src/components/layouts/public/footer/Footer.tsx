@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, Clock, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaFacebookF, FaFacebookMessenger, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -83,6 +84,39 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 md:hidden ">
+            {/* Facebook */}
+            <Link
+              href="https://www.facebook.com/chashmaexpressbd/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1877F2] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+            >
+              <FaFacebookF className="h-5 w-5" />
+            </Link>
+
+            {/* WhatsApp */}
+            <Link
+              href="https://wa.me/+8801302596174"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+            >
+              <FaWhatsapp className="h-5 w-5" />
+            </Link>
+
+            {/* Messenger */}
+            <Link
+              href="https://m.me/chashmaexpressbd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0084FF] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+            >
+              <FaFacebookMessenger className="h-5 w-5" />
+            </Link>
+          </div>
+
           {/* Categories Section */}
           <div>
             <h3 className="text-gray-800 font-semibold text-lg mb-4">
@@ -131,21 +165,37 @@ const Footer = () => {
             <div className="text-gray-400 text-sm text-center">
               © {currentYear} Chashma Express. All rights reserved.
             </div>
+
             {/* Social Icons */}
-            <div className="flex gap-3">
+            <div className="flex items-center gap-3 hidden lg:flex">
+              {/* Facebook */}
               <Link
                 href="https://www.facebook.com/chashmaexpressbd/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1877F2] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
               >
-                <Image
-                  src={
-                    'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/facebook-icon.svg'
-                  }
-                  alt={'facebook'}
-                  width={24}
-                  height={24}
-                />
+                <FaFacebookF className="h-5 w-5" />
+              </Link>
+
+              {/* WhatsApp */}
+              <Link
+                href="https://wa.me/+8801302596174"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+              >
+                <FaWhatsapp className="h-5 w-5" />
+              </Link>
+
+              {/* Messenger */}
+              <Link
+                href="https://m.me/chashmaexpressbd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0084FF] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
+              >
+                <FaFacebookMessenger className="h-5 w-5" />
               </Link>
             </div>
 

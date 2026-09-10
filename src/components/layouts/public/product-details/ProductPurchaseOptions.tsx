@@ -54,7 +54,7 @@ const ProductPurchaseOptions = ({ product }: Props) => {
           <div>
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-sm font-semibold text-gray-800">
-                Lens Colors
+                Lens Types
               </h3>
             </div>
 
@@ -84,7 +84,7 @@ const ProductPurchaseOptions = ({ product }: Props) => {
           <div>
             <div className="mb-3 flex items-center justify-between">
               <h3 className="text-sm font-semibold text-gray-800">
-                Frame Colors
+                Frame Colors &amp; Material
               </h3>
             </div>
 

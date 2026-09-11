@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageCircle, Bot } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { RiRobot2Fill } from 'react-icons/ri';
 import AIChatModal from './AIChatModal';
 import { BiSolidMessage } from 'react-icons/bi';
 
@@ -12,7 +10,7 @@ const FloatingIcon = () => {
 
   const handleWhatsAppClick = () => {
     // Replace with your WhatsApp number
-    const phoneNumber = '1234567890';
+    const phoneNumber = '01302596174';
     const message = 'Hello! I need help with my order.';
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,

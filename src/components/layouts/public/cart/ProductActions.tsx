@@ -61,8 +61,6 @@ const ProductActions = ({ productId, product }: Props) => {
 
   // ADD TO CART
   const handleAddToCart = async () => {
-    if (!handleRequireLogin()) return;
-
     try {
       setLoading(true);
 

@@ -56,6 +56,7 @@ export interface OrderItem {
   productId: string;
   name: string;
   price: number;
+  spacialPrice?: number;
   quantity: number;
   createdAt: string;
   updatedAt: string;

@@ -25,6 +25,8 @@ const getOrderById = async (id: string) => {
 
   const result = await res.json();
 
+  console.log(result.data);
+
   return result.data;
 };
 
@@ -34,6 +36,7 @@ const orderHistory = async (phone: string) => {
   const res = await fetch(url, {
     cache: 'no-store',
   });
+
   const text = await res.text();
 
   if (!res.ok) {
@@ -53,6 +56,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
   if (!order) {
     notFound();
   }
+
   const history = await orderHistory(order.phone);
 
   const summary = history?.summary;
@@ -63,7 +67,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
       : '0';
 
   return (
-    <main className=" space-y-6 p-4 md:p-6 print:p-0">
+    <main className="space-y-6 p-4 md:p-6 print:p-0">
       {/* Header */}
       <div className="flex items-center justify-between print:hidden">
         <div>
@@ -96,6 +100,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
             />
           </div>
         </section>
+
         {/* Customer Order Summary */}
         {history?.summary && (
           <section className="mt-6 rounded-sm border bg-background p-5">
@@ -194,10 +199,21 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
 
               <tbody className="divide-y">
                 {order.items?.map((item: OrderItem) => {
-                  const productPrice =
-                    item.product?.specialPrice ??
-                    item.product?.price ??
-                    item.price;
+                  /**
+                   * Price priority:
+                   *
+                   * 1. Order item's special price
+                   * 2. Product's current special price
+                   * 3. Product's regular price
+                   * 4. Order item's saved price
+                   */
+                  const productPrice = Number(
+                    item.spacialPrice ??
+                      item.product?.specialPrice ??
+                      item.product?.price ??
+                      item.price ??
+                      0,
+                  );
 
                   const subtotal = productPrice * item.quantity;
 
@@ -260,8 +276,11 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
 
           <div className="ml-auto max-w-md space-y-3">
             <SummaryRow
-              label="Subtotal"
-              value={`৳${getSubtotal(order).toFixed(2)}`}
+              label="Total"
+              value={`৳${(
+                getSubtotal(order) + Number(order.shippingFee)
+              ).toFixed(2)}`}
+              bold
             />
 
             <SummaryRow
@@ -271,13 +290,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
               } (৳${Number(order.shippingFee).toFixed(2)})`}
             />
 
-            <div className="border-t pt-3">
-              <SummaryRow
-                label="Total"
-                value={`৳${Number(order.total).toFixed(2)}`}
-                bold
-              />
-            </div>
+            <div className="border-t pt-3"></div>
 
             <SummaryRow label="Payment Method" value="Cash on Delivery" />
           </div>
@@ -314,13 +327,21 @@ const SummaryRow = ({
   </div>
 );
 
+/**
+ * Calculate subtotal using special price first.
+ */
 const getSubtotal = (order: Order): number => {
-  return order.items.reduce(
-    (total, item) =>
-      total +
-      Number(item.product?.specialPrice ?? item.product?.price) * item.quantity,
-    0,
-  );
+  return order.items.reduce((total, item) => {
+    const productPrice = Number(
+      item.spacialPrice ??
+        item.product?.specialPrice ??
+        item.product?.price ??
+        item.price ??
+        0,
+    );
+
+    return total + productPrice * item.quantity;
+  }, 0);
 };
 
 export default OrderDetailsPage;

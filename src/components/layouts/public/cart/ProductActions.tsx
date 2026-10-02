@@ -100,7 +100,7 @@ const ProductActions = ({ productId, product }: Props) => {
   return (
     <div className="space-y-2">
       {/* Product Name */}
-      <h1 className="text-xl md:text-2xl font-bold text-gray-800 mt-1 ms:hidden">
+      <h1 className="text-xl md:text-2xl font-bold text-gray-800 mt-1 md:hidden">
         {product.name}
       </h1>
 

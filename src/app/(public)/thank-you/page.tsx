@@ -44,7 +44,7 @@ interface OrderItem {
 interface Order {
   id: string;
   userId?: string;
-  total: number;
+
   totalAmount: number;
   status: string;
   name: string;
@@ -58,6 +58,9 @@ interface Order {
   createdAt: string;
   items: OrderItem[];
 }
+
+const getOrderItemPrice = (item: OrderItem) =>
+  item.product.specialPrice ?? item.price ?? item.product.price;
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -132,12 +135,18 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
     );
   }
 
-  console.log(order);
+  console.log('thankouy page', order);
 
   const formattedDate = new Date(order.createdAt).toLocaleString('en-BD', {
     dateStyle: 'medium',
     timeStyle: 'short',
   });
+
+  const productTotal = order.items.reduce((total, item) => {
+    return total + getOrderItemPrice(item) * item.quantity;
+  }, 0);
+
+  const grandTotal = productTotal + order.shippingFee;
 
   return (
     <main className="min-h-screen bg-slate-50 py-8 sm:py-12">
@@ -277,11 +286,8 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
 
                     <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
                       <span>
-                        ৳
-                        {(
-                          item.product.specialPrice ?? item.product.price
-                        ).toLocaleString()}
-                        × {item.quantity}
+                        ৳{getOrderItemPrice(item).toLocaleString()}×{' '}
+                        {item.quantity}
                       </span>
 
                       {item.size && <span>Size: {item.size}</span>}
@@ -295,8 +301,7 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
                     <p className="text-sm font-bold text-slate-900 sm:text-base">
                       ৳
                       {(
-                        item.product.specialPrice ??
-                        item.product.price * item.quantity
+                        getOrderItemPrice(item) * item.quantity
                       ).toLocaleString()}
                     </p>
                   </div>
@@ -326,7 +331,7 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
                 <span>পণ্যের মূল্য</span>
 
                 <span className="font-medium text-slate-700">
-                  ৳{order.totalAmount}
+                  ৳{productTotal.toLocaleString()}
                 </span>
               </div>
 
@@ -345,7 +350,7 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
                   </span>
 
                   <span className="text-2xl font-extrabold tracking-tight text-primary">
-                    ৳{order.total.toLocaleString()}
+                    ৳{grandTotal.toLocaleString()}
                   </span>
                 </div>
               </div>

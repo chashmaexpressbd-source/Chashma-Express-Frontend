@@ -136,7 +136,7 @@ const ProductPurchaseOptions = ({ product }: Props) => {
       </div>
 
       {/*Stock */}
-      <div className="flex items-center justify-between rounded-md border border-gray-100 bg-gray-50 px-4 py-3 hidden sm:block">
+      {/* <div className="flex items-center justify-between rounded-md border border-gray-100 bg-gray-50 px-4 py-3 hidden sm:block">
         <div>
           <p className="text-xs text-gray-500">Available Stock</p>
           <p className="mt-0.5 text-sm font-semibold text-gray-800">
@@ -151,7 +151,7 @@ const ProductPurchaseOptions = ({ product }: Props) => {
         >
           {product.stock}
         </div>
-      </div>
+      </div> */}
       <div className="hidden sm:block">
         {/* Actions */}
         <ProductActions product={product} productId={product.id} />

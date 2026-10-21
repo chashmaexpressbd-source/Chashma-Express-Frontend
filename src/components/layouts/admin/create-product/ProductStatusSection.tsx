@@ -32,10 +32,10 @@ export const ProductStatusSection = ({
           />
           <div>
             <span className="text-sm font-medium text-gray-900 dark:text-white">
-              Featured Product
+              Delivery Charge Free
             </span>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-              Display this product on featured section
+              Make this product eligible for free delivery
             </p>
           </div>
         </label>

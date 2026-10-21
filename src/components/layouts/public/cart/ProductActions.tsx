@@ -126,6 +126,13 @@ const ProductActions = ({ productId, product }: Props) => {
                 -{product.discount}%
               </span>
             )}
+
+            {/* Free Delivery Badge */}
+            {product.isFeatured && (
+              <span className="inline-flex items-center gap-1 rounded-sm bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-700 border border-green-200">
+                🚚 Free Delivery
+              </span>
+            )}
           </div>
         </div>
       </div>

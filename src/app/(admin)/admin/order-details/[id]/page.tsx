@@ -66,6 +66,7 @@ const OrderDetailsPage = async ({ params }: OrderDetailsPageProps) => {
       ? ((summary.totalDelivered / summary.totalOrders) * 100).toFixed(0)
       : '0';
 
+  console.log(order);
   return (
     <main className="space-y-6 p-4 md:p-6 print:p-0">
       {/* Header */}

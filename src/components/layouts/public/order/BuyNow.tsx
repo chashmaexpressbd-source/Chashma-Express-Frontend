@@ -45,8 +45,8 @@ const BuyNow = ({ product }: BuyNowProps) => {
     isInsideDhaka: true,
   });
 
-  // Delivery charge
-  const shippingFee = form.isInsideDhaka ? 90 : 120;
+  // Delivery charge: Featured products have free delivery
+  const shippingFee = product.isFeatured ? 0 : form.isInsideDhaka ? 90 : 120;
 
   // Effective unit price
   const unitPrice =
@@ -520,7 +520,9 @@ const BuyNow = ({ product }: BuyNowProps) => {
                         </p>
                         <p className="text-[11px] text-slate-500">
                           ডেলিভারি চার্জ:{' '}
-                          <span className="font-bold text-slate-900">৳৯০</span>
+                          <span className="font-bold text-slate-900">
+                            {product.isFeatured ? 'ফ্রি' : '৳৯০'}
+                          </span>
                         </p>
                       </div>
                     </button>
@@ -553,7 +555,9 @@ const BuyNow = ({ product }: BuyNowProps) => {
                         </p>
                         <p className="text-[11px] text-slate-500">
                           ডেলিভারি চার্জ:{' '}
-                          <span className="font-bold text-slate-900">৳১২০</span>
+                          <span className="font-bold text-slate-900">
+                            {product.isFeatured ? 'ফ্রি' : '৳১২০'}
+                          </span>
                         </p>
                       </div>
                     </button>
